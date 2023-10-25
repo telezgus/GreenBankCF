@@ -1,0 +1,11 @@
+{% extends "base/base.html" %}
+{% block content %}
+    <div class="container">
+        <br>
+        <h5>Transaction Success!</h5>
+        <p>You sent ${{new_transaction.amount}} to {{new_transaction.receiver_card.user.get_full_name}}</p>
+        <br>
+        <a href="{% url 'cards' %}" class="btn btn-success btn-block mt-3">Home</a>
+
+    </div>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+{% block content %}
+    <div class="container">
+        <br>
+        <h5>Card deleted!</h5>
+        <p>{{card.card_number}} - {{card.user.get_full_name}}</p>
+        <br>
+        <a href="{% url 'signup' %}" class="btn btn-success btn-block mt-3">Add new user</a>
+        <br>
+        <a href= "{% url 'new_card' %}" class="btn btn-success btn-block mt-3">Add new card</a>
+        <br>
+        <a href= "{% url 'delete_card' %}" class="btn btn-success btn-block mt-3">Delete a card</a>
+        <br>
+
+    </div>
+{% endblock content %}

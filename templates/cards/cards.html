@@ -1,0 +1,39 @@
+{% extends "base/base.html" %}
+{% block content %}
+<!-- Cards -->
+<div class="mt-4">
+    <h3 class="text-center">Cards</h3>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card rounded">
+                    <div class="card-body" style="background-color: #f0f0f0;">
+                        <br>
+                        {% if not cards %}
+                        <p>No cards</p>
+                        {% endif %}
+                        {% for card in cards %}
+                        <div class="card rounded">
+                            <div class="card-body">
+                                <h5>{{ card.card_number}}</h5>
+                                <br>
+                                <p>Balance:   $ {{ card.total_amount }}</p>
+                                <br>
+                                <p>Expiring date:   {{card.format_expiring_date}}</p>
+                                <br>
+                                <p>Alias:   {{card.alias}}  <a href="{% url 'change_alias' id=card.id %}"><span class="bi bi-pencil"></span></a></p>
+                                <a href="{% url 'transactions' id=card.id %}" class="btn btn-success btn-block mt-3">Summary</a>
+                            </div>
+                        </div>                        
+                        <br>
+                        {% endfor %}
+                        {% if perms.cards.add_card %}
+                        <a href="{% url 'signup' %}" class="btn btn-success btn-block mt-3">Back</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+{% endblock content %}
