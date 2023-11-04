@@ -5,6 +5,7 @@
         <h5>New user created!</h5>
         <p>{{new_user.get_full_name}}</p>
         <p>DNI: {{new_user.profile.dni}}</p>
+        <p>|***save this password safely***|</p>
         <p>Password: {{password}}</p>
         <br>
         <a href="{% url 'signup' %}" class="btn btn-success btn-block mt-3">Add new user</a>

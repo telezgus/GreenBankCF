@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 
 
 class LoginViewTestCase(TestCase):
+    """Tests login. 
+    """
     def setUp(self):
         self.user = User.objects.create_user(username='ismael', password='user123456')
         

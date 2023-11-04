@@ -6,6 +6,7 @@
         <br>
         <p>{{ user.get_full_name }}</p>
         <p>DNI: {{ user.profile.dni }}</p>
+        <p>Email: {{ user.email }}</p>
         {% if perms.cards.add_card %}
         <a href="{% url 'signup' %}" class="btn btn-success btn-block mt-3">Back</a>
         {% else %}

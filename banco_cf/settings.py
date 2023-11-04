@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'cards',
     'accounts',
+    'mailer',
 ]
 
 MIDDLEWARE = [
@@ -131,13 +133,42 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS= [ BASE_DIR / 'staticfiles']
 
+STATIC_ROOT = BASE_DIR / 'static'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Session timeout
+
+# Session expiration
+
 SESSION_EXPIRE_SECONDS = 45
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 SESSION_TIMEOUT_REDIRECT = 'inactivity_logout'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True 
+
+
+# Email settings
+
+EMAIL_BACKEND = 'mailer.backend.DbBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = 'Green Bank'
+
+
+# Celery
+
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+#Site info
+
+SITE_ID = 1
+SITE_NAME = "Green Bank CF"
+SITE_DOMAIN = 'greenbank_cf.com'
+
+

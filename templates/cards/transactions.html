@@ -8,7 +8,7 @@
             <div class="col-md-6">
                 <div class="card rounded">
                     <div class="card-body" style="background-color: #f0f0f0;">
-                        <a href= "{% url 'new_transaction' id=card.id %}" class="btn btn-success btn-block mt-3">New transaction</a>
+                        <a href= "{% url 'new_transaction' id=id %}" class="btn btn-success btn-block mt-3">New transaction</a>
                         <br>
                         <div class="card rounded">
                         
@@ -35,6 +35,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+    <br>   
 </div>
 {% endblock content %}

@@ -9,7 +9,7 @@
                         <h5 class="card-title text-center">New alias</h5>
                         <!-- Agrega aquí tu formulario de registro -->
                     <div class="card-footer text-center" >
-                        <form action={% url 'change_alias' card.id %} method="post">
+                        <form action={% url 'change_alias' id %} method="post">
                             {% csrf_token %}
                             
                             {{ form.as_p }}

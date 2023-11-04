@@ -5,14 +5,18 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class TransactionForm(forms.Form): 
-    alias = forms.CharField(max_length=100)
-    amount = forms.IntegerField()
+    """Form to create new transaction
+    """
+    alias = forms.CharField(label='Alias', max_length=50, help_text='', widget=forms.TextInput(attrs={'class': 'form-control'}))
+    amount = forms.IntegerField(label='Amount', help_text='', widget=forms.NumberInput(attrs={'class': 'form-control'}))
     pin = forms.CharField(
-            max_length=4,  # Define la longitud máxima como 4 caracteres
+            max_length=4,
+            label='PIN',
+            widget=forms.NumberInput(attrs={'class': 'form-control'}),
             validators=[
                 RegexValidator(
-                    regex=r'^\d{4}$',  # Expresión regular que coincide con 4 dígitos
-                    message="El campo debe contener exactamente 4 dígitos.",
+                    regex=r'^\d{4}$',  # Regular explession for 4 digits.
+                    message="This field must contain 4 digits.",
                 ),
             ]
         )
@@ -20,14 +24,34 @@ class TransactionForm(forms.Form):
 
 
 class NewCardForm(forms.Form):
-    dni = forms.IntegerField(label='DNI', validators=[MinValueValidator(1000000, message= "DNI too short"), MaxValueValidator(99999999,message= "DNI not valid")])
+    """Form to create new card. 
+    - DNI must be 7 or 8 digits long.
+    """
+    dni = forms.IntegerField(
+                            label='DNI', 
+                            validators=[MinValueValidator(1000000, 
+                                                          message= "DNI too short"),
+                                        MaxValueValidator(99999999,
+                                                          message= "DNI not valid")
+                                        ]
+                            )
 
 
 
 class DeleteCardForm(forms.Form):
-    card_number = forms.IntegerField(validators=[MinValueValidator(1000000000000000, message= "Card number must have 16 digits"), MaxValueValidator(9999999999999999,message= "Card number must have 16 digits")])
-    dni = forms.IntegerField(label="DNI", validators=[MinValueValidator(1000000, message= "DNI too short"), MaxValueValidator(99999999,message= "DNI not valid")])
+    """Form to delete a card.
+    - Card number must have 16 digits.
+    - DNI must be 7 or 8 digits long.
+    """
+    card_number = forms.IntegerField(label='Card Number',
+                                     widget=forms.NumberInput(attrs={'class': 'form-control'}),
+                                     validators=[MinValueValidator(1000000000000000, message= "Card number must have 16 digits"), MaxValueValidator(9999999999999999,message= "Card number must have 16 digits")])
+    dni = forms.IntegerField(label="DNI",
+                             widget=forms.NumberInput(attrs={'class': 'form-control'}),
+                             validators=[MinValueValidator(1000000, message= "DNI too short"), MaxValueValidator(99999999,message= "DNI not valid")])
 
 
 class ChangeAlias(forms.Form):
+    """Form for alias changing
+    """
     alias = forms.CharField(max_length=100)
