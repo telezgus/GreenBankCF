@@ -56,8 +56,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware' ,
-    'django_session_timeout.middleware.SessionTimeoutMiddleware' ,
+    'django.contrib.sessions.middleware.SessionMiddleware' , 
+    'django_session_timeout.middleware.SessionTimeoutMiddleware' , 
 ]
 
 ROOT_URLCONF = 'banco_cf.urls'
@@ -149,3 +149,28 @@ SESSION_EXPIRE_SECONDS = 45
 SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
 SESSION_TIMEOUT_REDIRECT = 'inactivity_logout'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True 
+
+
+# Email settings
+
+EMAIL_BACKEND = 'mailer.backend.DbBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = 'Green Bank'
+
+
+# Celery
+
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+#Site info
+
+SITE_ID = 1
+SITE_NAME = "Green Bank CF"
+SITE_DOMAIN = 'greenbank_cf.com'
+
+
