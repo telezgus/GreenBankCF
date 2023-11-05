@@ -10,9 +10,13 @@
                     <div class="card-body" style="background-color: #f0f0f0;">
                         <br>
                         {% if not cards %}
-                        <p>No cards</p>
+                        <div class="card rounded text-center">
+                            <br>
+                            <h5>No cards</h5>
+                            <br>
+                        </div>
                         {% endif %}
-                        {% for card in cards %}
+                        {% for card, encripted_id in cards %}
                         <div class="card rounded">
                             <div class="card-body">
                                 <h5>{{ card.card_number}}</h5>
@@ -21,8 +25,8 @@
                                 <br>
                                 <p>Expiring date:   {{card.format_expiring_date}}</p>
                                 <br>
-                                <p>Alias:   {{card.alias}}  <a href="{% url 'change_alias' id=card.id %}"><span class="bi bi-pencil"></span></a></p>
-                                <a href="{% url 'transactions' id=card.id %}" class="btn btn-success btn-block mt-3">Summary</a>
+                                <p>Alias:   {{card.alias}}  <a href="{% url 'change_alias' id=encripted_id %}"><span class="bi bi-pencil"></span></a></p>
+                                <a href="{% url 'transactions' id=encripted_id %}" class="btn btn-success btn-block mt-3">Summary</a>
                             </div>
                         </div>                        
                         <br>
@@ -34,6 +38,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+    <br>  
 </div>
 {% endblock content %}

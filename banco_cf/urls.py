@@ -12,5 +12,6 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
+# Handling 404 and 403 errors
 handler404 = 'cards.views.error_404'
 handler403 = 'cards.views.error_404'
