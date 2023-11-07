@@ -78,3 +78,4 @@ Pasos para instalar el proyecto en el entorno local del usuario.
 15. Iniciar Celery: En el terminal, ubicado en el directorio (ruta al repositorio local)/BancoCF (ejecutar lo siguiente en dos terminales):
 -  celery -A banco_cf worker
 -  celery -A banco_cf beat
+
