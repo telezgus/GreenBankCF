@@ -66,6 +66,13 @@ class Card(models.Model):
         """Adds a property that returns expiring date in m/y format
         """
         return self.expiring_date.strftime('%m/%y')
+    
+    @property
+    def format_card_number(self):
+        """Adds a property that returns expiring date in m/y format
+        """
+        return ' '.join([str(self.card_number)[i:i+4] for i in range(0, len(str(self.card_number)), 4)])
+    
 
     def __str__(self):
         """Returns card number when __str__ function is called

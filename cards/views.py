@@ -12,6 +12,7 @@ from cryptography.fernet import Fernet
 from dotenv import load_dotenv
 import os
 from .models import random_alias
+from django.views.decorators.cache import never_cache
 
 
 
@@ -151,7 +152,7 @@ def new_transaction(request,id):
         return redirect('forbidden')   
     
 
-
+@never_cache
 @login_required
 def confirm_transaction(request, id):
     """Renders tansaction confimation page

@@ -15,5 +15,5 @@ urlpatterns = [
     path('delete_card', delete_card , name = 'delete_card'),
     path('change_alias/<str:id>', change_alias , name = 'change_alias'),
     path('transaction_confirmed/<str:id>', confirm_transaction , name = 'transaction_confirmed'),   
-    
+       
 ]

@@ -19,7 +19,7 @@
                         {% for card, encripted_id in cards %}
                         <div class="card rounded">
                             <div class="card-body">
-                                <h5>{{ card.card_number}}</h5>
+                                <h5>{{ card.format_card_number}}</h5>
                                 <br>
                                 <p>Balance:   $ {{ card.total_amount }}</p>
                                 <br>

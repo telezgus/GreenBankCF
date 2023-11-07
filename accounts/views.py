@@ -23,7 +23,10 @@ def login_view(request):
             else:
                 return redirect('new_card')
     else:
-        form = AuthenticationForm()
+        if request.user.is_authenticated:
+            return redirect('cards')
+        else:
+            form = AuthenticationForm()
         
     return render(request, 'accounts/login.html', {'form': form})
 
