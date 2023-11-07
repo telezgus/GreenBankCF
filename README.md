@@ -75,7 +75,6 @@ Pasos para instalar el proyecto en el entorno local del usuario.
 14. Iniciar Redis
 - ejecutar redis-server en la terminal
 
-15. Iniciar Celery: 
-	En el terminal, ubicado en el directorio (ruta al repositorio local)/BancoCF (ejecutar lo siguiente en dos terminales):
-    		-  celery -A banco_cf worker
-    		-  celery -A banco_cf beat
+15. Iniciar Celery: En el terminal, ubicado en el directorio (ruta al repositorio local)/BancoCF (ejecutar lo siguiente en dos terminales):
+-  celery -A banco_cf worker
+-  celery -A banco_cf beat
