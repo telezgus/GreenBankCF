@@ -30,7 +30,7 @@ Pasos para instalar el proyecto en el entorno local del usuario.
 - pip install -r requirements.txt
 
 
-5. Crea una nueva base de datos en MySQL (Puedes nombrarla "banco_cf" o segun tu criterio)
+5. Crea una nueva base de datos en MySQL (Nombrarla "banco_cf")
 
 
 6. Crea un archivo .env con las siguientes variables y añade los valores de acuerdo a tu sistema.
