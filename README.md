@@ -25,7 +25,7 @@ Pasos para instalar el proyecto en el entorno local del usuario.
 - source env/bin/activate  # En sistemas basados en Unix
 - env\Scripts\activate  # En sistemas Windows
 
-4. Instala las dependencias del proyecto. Generalmente, las dependencias están listadas en un archivo requirements.txt. Puedes instalarlas con pip.
+4. Instala las dependencias del proyecto.
 
 - pip install -r requirements.txt
 
