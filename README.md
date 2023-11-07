@@ -35,14 +35,14 @@ Pasos para instalar el proyecto en el entorno local del usuario.
 
 6. Crea un archivo .env con las siguientes variables y añade los valores de acuerdo a tu sistema.
 
-	SECRET_KEY=django-insecure-584_!@77sjwi)t$)s&b4&r1i=jcp@98by@8_%p@p%)3hf*8izn
-	DEBUG=True
-	DB_NAME=banco_cf
-	DB_USER=<user>
-	DB_PASSWORD=<password>
-	ENCODED_KEY=5Evr_8ZYn8azghSvxiQGNN4yuAjyjEWzw5S0s_tyF3Q=
-	EMAIL_HOST_USER=<email>
-	EMAIL_HOST_PASSWORD=<password>
+-	SECRET_KEY=django-insecure-584_!@77sjwi)t$)s&b4&r1i=jcp@98by@8_%p@p%)3hf*8izn
+-	DEBUG=True
+-	DB_NAME=banco_cf
+-	DB_USER=<user>
+-	DB_PASSWORD=<password>
+-	ENCODED_KEY=5Evr_8ZYn8azghSvxiQGNN4yuAjyjEWzw5S0s_tyF3Q=
+-	EMAIL_HOST_USER=<email>
+-	EMAIL_HOST_PASSWORD=<password>
 
 
 8. Realiza las migraciones de la base de datos.
