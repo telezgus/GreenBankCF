@@ -68,10 +68,10 @@ def load_users():
         for row in read_csv:
             username, password, first_name, last_name, email, dni, group  = row
             user = User.objects.create(username=username,
-                                       password=password,
                                        first_name=first_name,
                                        last_name=last_name,
                                        email=email)
+            user.set_password(password)
             profile = Profile.objects.create(user=user,dni=dni)
             if group == 'client':    
                 user.groups.add(group_client)
