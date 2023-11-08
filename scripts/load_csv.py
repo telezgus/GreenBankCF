@@ -88,7 +88,7 @@ def load_cards():
         for row in read_csv:
             user, card_number, pin, total_amount  = row
             card_number=int(card_number.replace("-",""))
-            Card.objects.create(user=User.objects.get(id=user), card_number=card_number, pin=pin, total_amount=total_amount)
+            Card.objects.create(user=User.objects.get(username=user), card_number=card_number, pin=pin, total_amount=total_amount)
 
 
 

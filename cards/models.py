@@ -84,14 +84,10 @@ class Card(models.Model):
 class Transaction(models.Model):
     "Trnsaction model"
     sender_card = models.ForeignKey(Card,
-                                    on_delete=models.SET_DEFAULT,
-                                    default=None,
-                                    related_name='sender'
+                                    on_delete=models.CASCADE,related_name='sender_card'
                                     )
     receiver_card = models.ForeignKey(Card,
-                                      on_delete=models.SET_DEFAULT,
-                                      default=None,
-                                      related_name='reciver'
+                                      on_delete=models.CASCADE, related_name='receiver_card'
                                       )
     amount = models.DecimalField(decimal_places=2, max_digits=10)
     date = models.DateTimeField(default=timezone.now)
