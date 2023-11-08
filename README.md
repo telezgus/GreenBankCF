@@ -79,3 +79,29 @@ Pasos para instalar el proyecto en el entorno local del usuario.
 -  celery -A banco_cf worker
 -  celery -A banco_cf beat
 
+Tips para operar:
+- Si se crea un usuario solo se mostrará la contraseña luego de crearlo (tomar nota).
+- Ingresar mail valido para probar restaurar contraseña (seguro ingresa en spam)
+- Solo los usuarios precargados tienen saldo.
+- Si se crea una tarjeta solo se mostrará el PIN luego de crearla (tomar nota).
+
+Aquí abajo dejo la información pasada en limpio tanto de usuarios como tarjetas pre cargadas.
+
+Usuarios:
+
+Username        Password
+ismael          Tr2VEjYHJj
+conrado         nWkMEN4kZn
+atilio          g6KwrEzJTN
+
+Admin-user
+gus             admingus
+
+Tarjetas
+
+Card number             PIN
+4546-8574-1856-5565     4345
+5595-3458-9989-7125     1595
+4858-6696-5887-1578     1234
+5854-6656-2587-1547     4345
+4546-9896-2357-1478     0023
