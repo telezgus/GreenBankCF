@@ -29,7 +29,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = os.getenv("DEBUG")
 
-
 ALLOWED_HOSTS = ['*']
 
 
@@ -56,8 +55,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware' , 
-    'django_session_timeout.middleware.SessionTimeoutMiddleware' , 
+    'django.contrib.sessions.middleware.SessionMiddleware' ,
+    'django_session_timeout.middleware.SessionTimeoutMiddleware' ,
 ]
 
 ROOT_URLCONF = 'banco_cf.urls'
@@ -172,5 +171,4 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379"
 SITE_ID = 1
 SITE_NAME = "Green Bank CF"
 SITE_DOMAIN = 'greenbank_cf.com'
-
 
