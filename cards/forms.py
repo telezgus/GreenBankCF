@@ -7,8 +7,15 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 class TransactionForm(forms.Form): 
     """Form to create new transaction
     """
-    alias = forms.CharField(label='Alias', max_length=50, help_text='', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    amount = forms.IntegerField(label='Amount', help_text='', widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    alias = forms.CharField(label='Alias',
+                            max_length=50,
+                            help_text='',
+                            widget=forms.TextInput(attrs={'class': 'form-control'}))
+    amount = forms.IntegerField(label='Amount',
+                                help_text='',
+                                min_value=1,
+                                error_messages={'min_value': 'Invalid amount'},
+                                widget=forms.NumberInput(attrs={'class': 'form-control'}))
     pin = forms.CharField(
             max_length=4,
             label='PIN',

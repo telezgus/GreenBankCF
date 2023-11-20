@@ -166,16 +166,22 @@ def confirm_transaction(request, id):
     """
     transaction_id = decrypt_id(id)
     new_transaction = get_object_or_404(Transaction,id=transaction_id)
-    if new_transaction.sender_card.user == request.user:
-        #sender_card = get_object_or_404(Card,id=transaction.sender_card.id)
-        #receiver_card = get_object_or_404(Card, id=transaction.receiver_card.id)
-        new_transaction.sender_card.total_amount-= new_transaction.amount
-        new_transaction.sender_card.save()
-        new_transaction.receiver_card.total_amount+= new_transaction.amount
-        new_transaction.receiver_card.save()
-        return render(request,'cards/transaction_ok.html', {'new_transaction':new_transaction})
+    if new_transaction.confirmed == True:
+        message = 'Transaction already made'
+        return render(request,'errors/forbidden.html',{'message':message}, status=403)
     else:
-        return redirect('forbidden')
+        if new_transaction.sender_card.user == request.user:
+            #sender_card = get_object_or_404(Card,id=transaction.sender_card.id)
+            #receiver_card = get_object_or_404(Card, id=transaction.receiver_card.id)
+            new_transaction.sender_card.total_amount-= new_transaction.amount
+            new_transaction.sender_card.save()
+            new_transaction.receiver_card.total_amount+= new_transaction.amount
+            new_transaction.receiver_card.save()
+            new_transaction.confirmed = True
+            new_transaction.save()
+            return render(request,'cards/transaction_ok.html', {'new_transaction':new_transaction})
+        else:
+            return redirect('forbidden')
 
         
 

@@ -4,7 +4,9 @@
         <br>
         <h5>Forbidden 403</h5>
         <p>This opperation is not allowed</p>
-        
-
+        {% if message %}
+        <p><b>{{message}}</b></p>
+        {% endif %}
+        <a href="{% url 'cards' %}" class="btn btn-success btn-block mt-3">Home</a>
     </div>
 {% endblock content %}

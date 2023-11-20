@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import timedelta
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinValueValidator
 import random
 from random_word import RandomWords
 
@@ -69,7 +69,7 @@ class Card(models.Model):
     
     @property
     def format_card_number(self):
-        """Adds a property that returns expiring date in m/y format
+        """Adds a property that returns formated card number
         """
         return ' '.join([str(self.card_number)[i:i+4] for i in range(0, len(str(self.card_number)), 4)])
     
@@ -89,8 +89,9 @@ class Transaction(models.Model):
     receiver_card = models.ForeignKey(Card,
                                       on_delete=models.CASCADE, related_name='receiver_card'
                                       )
-    amount = models.DecimalField(decimal_places=2, max_digits=10)
+    amount = models.DecimalField(decimal_places=2, max_digits=10, validators=[MinValueValidator(0, message='Invalid amount')])
     date = models.DateTimeField(default=timezone.now)
+    confirmed = models.BooleanField(default=False)
     
 
     class Meta:
