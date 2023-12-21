@@ -126,13 +126,17 @@ def new_transaction(request,id):
                     if amount <= card.total_amount:
                         try:
                             receiver_card = Card.objects.get(alias=alias)
-                            new_transaction = Transaction.objects.create(
-                                                                        sender_card=card,
-                                                                        receiver_card=receiver_card,
-                                                                        amount=amount
-                                                                        )
-                            transaction_id_encrypted = encrypt_id(new_transaction.id)
-                            return render(request, 'cards/confirm_transaction.html', {'new_transaction':new_transaction, 'transaction_id_encrypted':transaction_id_encrypted })                            
+                            if card == receiver_card:
+                                message = "Transaction not valid"
+                                return new_transaction_render(request,form,card,id,message)
+                            else:    
+                                new_transaction = Transaction.objects.create(
+                                                                            sender_card=card,
+                                                                            receiver_card=receiver_card,
+                                                                            amount=amount
+                                                                            )
+                                transaction_id_encrypted = encrypt_id(new_transaction.id)
+                                return render(request, 'cards/confirm_transaction.html', {'new_transaction':new_transaction, 'transaction_id_encrypted':transaction_id_encrypted })                            
                         except:                            
                             message = "Alias not valid"
                             return new_transaction_render(request,form,card,id,message)
